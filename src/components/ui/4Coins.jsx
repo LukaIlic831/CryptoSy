@@ -10,68 +10,64 @@ const FourCoins = () => {
     const [coins, setCoins] = useState([]);
     const [loading, setLoading] = useState();
 
-    async function fetchData(){
+    async function fetchData() {
         setLoading(true);
         const { data } = await axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false')
         setCoins(data);
         setTimeout(() => {
             setLoading(false);
-          }, 600);
+        }, 600);
     }
 
+   
 
     useEffect(() => {
         fetchData();
     }, []);
 
     return (
-        
+
         <div className='row'>
-        <div className="cryptocurrency-prices">
-                        <h2>Cryptocurrency Prices</h2>
-                        <table className='table-coins'>
-                            <thead>
-                                <tr className='table-coins-row'>
-                                    <th>Rank</th>
-                                    <th>Coin Image</th>
-                                    <th>Symbol</th>
-                                    <th>Name</th>
-                                    <th>Price</th>
-                                    <th>Market Cap</th>
-                                </tr>
-                            </thead>
-                            <tbody className='table-coins-body'>
-                               { 
-                                 loading ?
-                                 coins.slice(0,4).map(item => (
-                                    <tr key={item.id}>
-                                    <td className='skeleton-table-row'></td>
-                                    <td className='skeleton-table-row'></td>
-                                    <td className='skeleton-table-row'></td>
-                                    <td className='skeleton-table-row'></td>
-                                    <td className='skeleton-table-row'></td>
-                                    <td className='skeleton-table-row'></td>
-                                </tr>
-                                ))  :
-                                    coins.sort((a,b) => a-b).slice(0,4).map(item => (
-                                        <tr key={item.id} className='table-coins-row' onClick={() => navigate(`/coins/${item.id}`)}>
-                                        <td>{item.market_cap_rank}</td>
-                                        <td><img className='coin-img' src={item.image}/> </td>
-                                        <td>{item.symbol}</td>
-                                        <td>{item.name}</td>
-                                        <td>${item.current_price}</td>
-                                        <td>${item.market_cap}</td>
-                                    </tr>
+            <div className="cryptocurrency-prices">
+                <div className="cryptocurrency-pricesTitle">
+                    <h2>Cryptocurrency Prices</h2>
+                </div>
+                <div className="AllCoins--center">
+                    <div className="AllCoins__wrapper background--blocks">
+                        {
+                            loading ? coins.sort((a, b) => a - b).slice(0, 4).map(item => (
+                                <div key={item.id} className="skeleton__loading"></div>
+                            ))
+                                :
+                                
+                                    coins.sort((a, b) => a - b).slice(0, 4).map(item => (
+                                        <div key={item.id} className="AllCoin__block fourCoinsBlock" onClick={() => navigate(`/coins/${item.id}`)}>
+                                            <div className="AllCoin__para">
+                                                <figure className='AllCoin__img--wrapper'>
+                                                    <img className='AllCoin__img' src={item.image} alt="" />
+                                                </figure>
+                                                <div className="AllCoin__name">
+                                                    <span>{item.name}</span>
+                                                    <p>{item.symbol}</p>
+                                                </div>
+                                            </div>
+                                            <div className="AllCoin__Price--para">
+                                                <p className='AllCoin__Price'>${item.current_price}</p>
+                                                {item.price_change_percentage_24h > 0 ?
+                                                    <span className='green-perc'>{item.price_change_percentage_24h}%</span>
+                                                    :
+                                                    <span className='red-perc'>{item.price_change_percentage_24h}%</span>
+                                                }
+                                            </div>
+                                        </div>
                                     ))
                                 }
-                                
-                                
-                            </tbody>
-                        </table>
-                        <a href="#" className='show-all' onClick={() => navigate('/coins')}>Show All</a>
                     </div>
+                </div>
+                <a href="#" className='show-all' onClick={() => navigate('/coins')}>Show All</a>
+            </div>
         </div>
-        
+
     );
 }
 

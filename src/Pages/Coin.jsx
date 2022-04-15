@@ -8,7 +8,7 @@ import ChartLine from '../components/chart';
 
 
 
-const Coin = ({addFavCoin, favCoin}) => {
+const Coin = ({addFavCoin, favCoin})=> {
 
     const navigate = useNavigate();
     const { id } = useParams();
@@ -40,7 +40,7 @@ const Coin = ({addFavCoin, favCoin}) => {
         <div className="row">
             <Nav />
             <div className='coin-data'>
-                    <div className="coin-name background">
+                    <div className="coin-name background--blocks">
                         <div className='coin-rank'>
                         {
                             loading ? 
@@ -85,17 +85,17 @@ const Coin = ({addFavCoin, favCoin}) => {
                             }
                         </div>
                     </div>
-                    <div className="coin-info background">
+                    <div className="coin-info background--blocks">
                     <FontAwesomeIcon icon="fas fa-backward" onClick={() => navigate('/coins')}/>
                     <h1>Go back to Coin List
                     </h1>
                     </div>
                 </div>
                 <div className="coin-char">
-                    <div className="coin-char-data background">
+                    <div className="coin-char-data background--blocks">
                         <ChartLine coinname={id}/>
                     </div>
-                    <div className="coin-info-data background">
+                    <div className="coin-info-data background--blocks">
                         {
                             loading ?
                             coin.map(item => (
@@ -197,6 +197,7 @@ const Coin = ({addFavCoin, favCoin}) => {
                             )
                         }
                     </div>
+                    <div className='margin'></div>
                 </div>
             </div>
 

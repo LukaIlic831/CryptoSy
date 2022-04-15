@@ -7,12 +7,11 @@ const Nav = () => {
 
     const navigate = useNavigate();
 
-
     return (
         <>
          <section id="navigation">
                 <nav>
-                    <div>
+                    <div className='logo__wrapper'>
                         <h2 onClick={() => navigate('/')}>CryptoSy</h2>
                     </div>
                     <div className="nav__profile">

@@ -11,7 +11,6 @@ import Favoritecoins from "./Pages/FavoriteCoins";
 function App() {
 
   const [favCoin, setFavcoin] = useState([]);
-
   function addFavoriteCoin(coin){
     setFavcoin([...favCoin, {
       ...coin
@@ -22,7 +21,7 @@ function App() {
     setFavcoin(favCoin.filter(item => item.id !== coin))
   }
 
-
+  
   return(
     <Router>
       <Routes>

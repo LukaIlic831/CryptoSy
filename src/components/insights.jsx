@@ -55,7 +55,7 @@ const Insights = () => {
     return (
         <>
         <div className='insights'>
-                        <div className="sales">
+                        <div className="sales background--blocks">
                             <div className='insights-icons'>
                                 <span className="material-icons-sharp">
                                 <FontAwesomeIcon icon="fas fa-chart-line" />
@@ -69,7 +69,7 @@ const Insights = () => {
                             </div>
                             <small className='text-muted'>Last 24 Hours</small>
                         </div>
-                        <div className="expenses">
+                        <div className="expenses background--blocks">
                             <span className="material-icons-sharp">
                             <FontAwesomeIcon icon="fa-solid fa-circle-dollar-to-slot" />
                             </span>
@@ -81,7 +81,7 @@ const Insights = () => {
                             </div>
                             <small className='text-muted'>Last 24 Hours</small>
                         </div>
-                        <div className="income">
+                        <div className="income background--blocks">
                             <span className="material-icons-sharp">
                                 <FontAwesomeIcon icon="fas fa-chart-pie" />
                             </span>

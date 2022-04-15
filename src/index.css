@@ -28,6 +28,14 @@ code {
   padding: 0 20px;
 }
 
+.background--blocks{
+  background-color: white;
+  padding: 1.4rem;
+  border-radius: 2rem;
+  margin-top: 1rem;
+  box-shadow: 0 2rem 3rem rgb(132 139 200 / 18%);
+}
+
 
 li{
   list-style-type:none;
@@ -39,6 +47,23 @@ a{
 
 button{
   cursor: pointer;
+}
+
+.margin{
+  width: 100%;
+  height: 2px;
+}
+
+.fa-circle-half-stroke{
+  font-size: 22px;
+  padding-left: 20px;
+  cursor: pointer;
+  transition:all 300ms ease;
+  transform: scale(1);
+}
+
+.fa-circle-half-stroke:hover{
+  transform: translateY(-2px)
 }
 
 .fa-star{
@@ -57,6 +82,10 @@ nav{
   margin:0 auto;
   padding:0 20px;
   height: 100px;
+}
+
+.logo__wrapper{
+  display: flex;
 }
 
 nav h2{
@@ -135,13 +164,6 @@ main{
   gap: 1.6rem;
 }
 
-.insights > div{
-  background-color: white;
-  padding: 1.4rem;
-  border-radius: 2rem;
-  margin-top: 1rem;
-  box-shadow: 0 2rem 3rem rgba(132, 139, 200,0.18);
-}
 
 .material-icons-sharp{
   color:rgb(65, 65, 207);
@@ -219,11 +241,17 @@ color: #ff7782;
 
 /* 4-Coins */
 .cryptocurrency-prices{
-  margin-top: 2rem;
+  margin-top: 0.2rem;
 }
 
 .cryptocurrency-prices h2{
   margin:30px
+}
+
+.cryptocurrency-pricesTitle{
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 table{
@@ -269,11 +297,89 @@ tbody tr:last-child td{
   max-height: 500px;
 }
 
+.AllCoins__wrapper{
+  display: flex;
+  width: 70%;
+  flex-direction: column;
+  align-items: center;
+}
+
+.AllCoins--center{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.AllCoin__block{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.fourCoinsBlock{
+  justify-content: space-between;
+}
+
+.style-supply p{
+  font-size: 24px;
+}
+
+.style-para, .style-name, .style-supply, .style-volume, .AllCoin__Price--para, .remove-coin{
+  width: 100%;
+  max-width: calc(100%/6 + 56px);
+  text-align: center;
+}
+
+.AllCoin__para{
+  display: flex;
+  align-items: center;
+text-align: right;
+}
+
+
+.AllCoin__img--wrapper{
+  padding-right: 10px;
+}
+
+.AllCoin__img{
+  width: 30px;
+  height: 30px;
+}
+
+.AllCoin__name{
+  text-align: left;
+}
+
+.AllCoin__name span{
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.AllCoin__name p{
+  color:#7e7d7d;
+}
+
+.AllCoin__Price--para{
+ text-align: right;
+ padding-right: 20px;
+}
+
+.coins-page{
+  width: 90%;
+}
+
 .show-all{
   text-align: center;
   display: block;
   margin: 1rem;
   color:rgb(65, 65, 207);
+}
+
+.coin-table-info{
+  box-shadow: none;
 }
 
 .coin-table-info,
@@ -301,13 +407,6 @@ tbody tr:last-child td{
   gap: 1.6rem;
 }
 
-.background{
-  background-color: white;
-  padding: 1.4rem;
-  border-radius: 2rem;
-  margin-top: 1rem;
-  box-shadow: 0 2rem 3rem rgba(132, 139, 200,0.18);
-}
 
 .coin-char{
   display: grid;
@@ -418,6 +517,14 @@ tbody tr:last-child td{
   color:rgb(54, 173, 54);
 }
 
+.green-perc{
+  color:rgb(54, 173, 54);
+}
+
+.red-perc{
+  color:rgb(184, 35, 35);
+}
+
 .loser-face{
   color:rgb(184, 35, 35);
 }
@@ -446,14 +553,20 @@ tbody tr:last-child td{
 .remove-coin{
   color:rgb(255, 46, 46);
   font-weight: 600;
-  transition: all 300ms ease-in-out;
 }
 
-.remove-coin:hover{
-  transform: scale(1.1);
+.remove{
+  color:black;
 }
 
 /* Skeleton */
+
+.skeleton__loading{
+  width: 100%;
+  height: 30px;
+  margin-bottom: 20px;
+  background-color: lightgray;
+}
 
 .skeleton-title{
   width: 400px;
@@ -535,5 +648,58 @@ tbody tr:last-child td{
 
   .table-coins-row{
     font-size: 12px;
+  }
+
+  .coin-info-data{
+    margin-bottom: 50px;
+  }
+
+  .AllCoins__wrapper{
+    width: 100%;
+  }
+
+  .AllCoin__supply, .AllCoin__volume{
+    display: none;
+  }
+
+  .AllCoin__block{
+    justify-content: space-between;
+  }
+
+}
+
+@media(max-width:440px){
+
+  .Gainer-Loser{
+    grid-template-columns: 1fr;
+  }
+
+  .para{
+    display: none;
+  }
+
+  .middle{
+    font-size: 10px;
+  }
+
+  .favorite p{
+    display: none;
+  }
+
+  .table-coins-row{
+    font-size: 12px;
+  }
+
+  .AllCoin__img{
+    width: 20px;
+    height: 20px;
+  }
+
+  .AllCoin__name span{
+    font-size: 14px;
+  }
+
+  .cryptocurrency-prices h2{
+    font-size: 21px;
   }
 }

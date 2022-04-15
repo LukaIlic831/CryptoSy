@@ -22,18 +22,18 @@ const Coins = () => {
 
         // Getting Gainer Coin
 
-        data.map(item =>  item.price_change_percentage_24h > maxPriceChanged ? (maxPriceChanged = item.price_change_percentage_24h) : ''); 
+        data.map(item => item.price_change_percentage_24h > maxPriceChanged ? (maxPriceChanged = item.price_change_percentage_24h) : '');
         setMaxCoin(data.filter(item => item.price_change_percentage_24h == maxPriceChanged));
-        
+
         // Getting Loser Coin
 
-        data.map(item =>  item.price_change_percentage_24h < minPriceChanged ? (minPriceChanged = item.price_change_percentage_24h) : ''); 
+        data.map(item => item.price_change_percentage_24h < minPriceChanged ? (minPriceChanged = item.price_change_percentage_24h) : '');
         setMinCoin(data.filter(item => item.price_change_percentage_24h == minPriceChanged));
 
         setTimeout(() => {
             setLoading(false);
-          }, 600);
-    } 
+        }, 600);
+    }
 
 
     useEffect(() => {
@@ -42,52 +42,51 @@ const Coins = () => {
 
     return (
         <>
-        <div className='row'>
-        <Nav />
-            <Gainerloser maxCoin = {maxCoin} minCoin = {minCoin} loading={loading}/>
+            <div className='row'>
+                <Nav />
+                <Gainerloser maxCoin={maxCoin} minCoin={minCoin} loading={loading} />
                 <div className="cryptocurrency-prices coins">
                     <h2>Cryptocurrency Prices by Market Cap</h2>
-                    <table className='table-coins'>
-                        <thead>
-                            <tr className='table-coins-row'>
-                                <th>Rank</th>
-                                <th>Coin Image</th>
-                                <th>Symbol</th>
-                                <th>Name</th>
-                                <th>Price</th>
-                                <th>Market Cap</th>
-                            </tr>
-                        </thead>
-                        <tbody className='table-coins-body'>
+                    <div className="AllCoins--center">
+                        <div className="AllCoins__wrapper coins-page background--blocks">
                             {
+                                loading ? coins.sort((a, b) => a - b).map(item => (
+                                    <div key={item.id} className="skeleton__loading"></div>
+                                ))
+                                    :
 
-                                loading ?
-                                coins.map(item => (
-                                    <tr key={item.id}>
-                                        <td className='skeleton-table-row'></td>
-                                        <td className='skeleton-table-row'></td>
-                                        <td className='skeleton-table-row'></td>
-                                        <td className='skeleton-table-row'></td>
-                                        <td className='skeleton-table-row'></td>
-                                        <td className='skeleton-table-row'></td>
-                                    </tr>
-                                ))
-                                :
-                                coins.sort((a, b) => a - b).map(item => (
-                                    <tr key={item.id} className='table-coins-row' onClick={() => navigate(`${item.id}`)}>
-                                        <td>{item.market_cap_rank}</td>
-                                        <td><img className='coin-img' src={item.image} /> </td>
-                                        <td>{item.symbol}</td>
-                                        <td>{item.name}</td>
-                                        <td>${item.current_price}</td>
-                                        <td>${item.market_cap}</td>
-                                    </tr>
-                                ))
+                                    coins.sort((a, b) => a - b).map(item => (
+                                        <div key={item.id} className="AllCoin__block" onClick={() => navigate(`/coins/${item.id}`)}>
+                                            <div className="AllCoin__para style-para">
+                                                <figure className='AllCoin__img--wrapper'>
+                                                    <img className='AllCoin__img' src={item.image} alt="" />
+                                                </figure>
+                                                <div className="AllCoin__name style-name">
+                                                    <span>{item.name}</span>
+                                                    <p>{item.symbol}</p>
+                                                </div>
+                                            </div>
+                                            <div className="AllCoin__supply style-supply">
+                                                {item.total_supply == null ? <p>-</p> : item.total_supply}
+                                            </div>
+                                            <div className="AllCoin__volume style-volume">
+                                                {item.total_volume}
+                                            </div>
+                                            <div className="AllCoin__Price--para">
+                                                <p className='AllCoin__Price'>${Math.floor(item.current_price)}</p>
+                                                {item.price_change_percentage_24h > 0 ?
+                                                    <span className='green-perc'>{item.price_change_percentage_24h}%</span>
+                                                    :
+                                                    <span className='red-perc'>{item.price_change_percentage_24h}%</span>
+                                                }
+                                            </div>
+                                        </div>
+                                    ))
                             }
-                        </tbody>
-                    </table>
+                        </div>
+                    </div>
                 </div>
-        </div>
+            </div>
         </>
     );
 }
