@@ -73,7 +73,7 @@ const Coins = () => {
                                                 {item.total_volume}
                                             </div>
                                             <div className="AllCoin__Price--para">
-                                                <p className='AllCoin__Price'>${Math.floor(item.current_price)}</p>
+                                                <p className='AllCoin__Price'>${item.current_price}</p>
                                                 {item.price_change_percentage_24h > 0 ?
                                                     <span className='green-perc'>{item.price_change_percentage_24h}%</span>
                                                     :

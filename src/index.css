@@ -569,7 +569,7 @@ text-align: right;
 }
 
 .skeleton-title{
-  width: 400px;
+  width:100%;
   height: 36px;
   background-color: lightgray;
 }
@@ -666,6 +666,10 @@ text-align: right;
     justify-content: space-between;
   }
 
+  .AllCoin__Price--para h3, .remove h3, .style-para h3{
+    font-size: 16px;
+  }
+
 }
 
 @media(max-width:440px){
@@ -701,5 +705,9 @@ text-align: right;
 
   .cryptocurrency-prices h2{
     font-size: 21px;
+  }
+
+  .AllCoin__Price--para h3, .remove h3, .style-para h3{
+    font-size: 14px;
   }
 }
