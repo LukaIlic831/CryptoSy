@@ -4,9 +4,9 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {library} from "@fortawesome/fontawesome-svg-core";
-import {faBars, faChartPie, faArrowLeft, faBackward, faChartLine, faCircleHalfStroke, faCircleDollarToSlot, faStar, faFaceSmile, faFaceFrown} from "@fortawesome/free-solid-svg-icons";
+import {faBars, faXmark, faChartPie, faAngleRight, faArrowLeft, faBackward, faChartLine, faCircleHalfStroke, faCircleDollarToSlot, faStar, faFaceSmile, faFaceFrown} from "@fortawesome/free-solid-svg-icons";
 
-library.add(faBars, faChartPie, faArrowLeft, faBackward, faChartLine, faCircleHalfStroke,faCircleDollarToSlot, faStar ,faFaceSmile, faFaceFrown);
+library.add(faBars, faXmark, faAngleRight, faChartPie, faArrowLeft, faBackward, faChartLine, faCircleHalfStroke,faCircleDollarToSlot, faStar ,faFaceSmile, faFaceFrown);
 
 ReactDOM.render(
   <React.StrictMode>

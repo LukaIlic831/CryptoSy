@@ -64,7 +64,7 @@ const Insights = () => {
                             <div className="middle">
                                 <div className="left">
                                     <h3>Average Market Cap</h3>
-                                    {loading ? <h1 className='skeleton-title'></h1> : <h1>${averageMarketCap()}</h1>}
+                                    {loading ? <h1 className='skeleton-title'></h1> : <h1 className='ins-price'>${averageMarketCap()}</h1>}
                                 </div>
                             </div>
                             <small className='text-muted'>Last 24 Hours</small>
@@ -76,7 +76,7 @@ const Insights = () => {
                             <div className="middle">
                                 <div className="left">
                                     <h3>Average Price Change</h3>
-                                    {loading ? <h1 className='skeleton-title'></h1> : <h1>${averagePriceChange()}</h1>}
+                                    {loading ? <h1 className='skeleton-title'></h1> : <h1 className='ins-price'>${averagePriceChange()}</h1>}
                                 </div>
                             </div>
                             <small className='text-muted'>Last 24 Hours</small>
@@ -88,7 +88,7 @@ const Insights = () => {
                             <div className="middle">
                                 <div className="left">
                                     <h3>Total Volume</h3>
-                                    {loading ? <h1 className='skeleton-title'></h1> : <h1>${totalVolume()}</h1>}
+                                    {loading ? <h1 className='skeleton-title'></h1> : <h1 className='ins-price'>${totalVolume()}</h1>}
                                 </div>
                                 
                             </div>

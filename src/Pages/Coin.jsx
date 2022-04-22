@@ -8,7 +8,8 @@ import ChartLine from '../components/chart';
 
 
 
-const Coin = ({addFavCoin, favCoin})=> {
+const Coin = ({ addFavCoin, favCoin }) => {
+
 
     const navigate = useNavigate();
     const { id } = useParams();
@@ -21,10 +22,11 @@ const Coin = ({addFavCoin, favCoin})=> {
         setCoin(data);
         setTimeout(() => {
             setLoading(false);
-          }, 600);
+        }, 600);
+        console.log(data)
     }
 
-    function addCointoFav(){
+    function addCointoFav() {
         coin.map(item => addFavCoin(item));
     }
 
@@ -39,167 +41,107 @@ const Coin = ({addFavCoin, favCoin})=> {
     return (
         <div className="row">
             <Nav />
-            <div className='coin-data'>
-                    <div className="coin-name background--blocks">
-                        <div className='coin-rank'>
-                        {
-                            loading ? 
-                            coin.map(item => (
-                                <span key={item.id} className='skeleton-rank'></span>
-                            ))
-                            :
-                            coin.map(item => (
-                                <span key={item.id} className='coin-rank'>Rank #{item.market_cap_rank}</span>
-                            ))
-                        }
-                        </div>
-                        {
-                            loading ?
-                            coin.map(item => (
-                                <div key={item.id}>
-                                    <div className='skeleton-para'/>
-                                        <div className='skeleton-coin'>
-                                            <h3></h3>
-                                            <h1></h1>
-                                        </div>
-                                        <small className='skeleton-para'></small> 
+            <div className="c__wrapper">
+                <div className="c__back">
+                    <span className='c__a' onClick={() => navigate('/coins')}>
+                        All Coins
+                    </span>
+                    <FontAwesomeIcon icon="fa-solid fa-angle-right c__back-icn" />
+                    {
+                        coin.map(item =>
+                            <span className='c__n' key={item.id}>
+                                {item.name}
+                            </span>
+                        )
+                    }
+                </div>
+                {
+                    coin.map(item =>
+                        <div className="c__all" key={item.id}>
+                            <div className="c__all-title">
+                                <figure className="c__logo">
+                                    <img src={item.image} alt="" />
+                                </figure>
+                                <div className="c__title">
+                                    <div className="c__name">
+                                        {item.name}
                                     </div>
-                            ))
-                            :
-                            coin.map(item => (
-                                <div className="coin-price" key={item.id}>
-                                    <img className='coin-img' src={item.image}/>
-                                        <div className="left">
-                                            <h3>{item.name} ({item.symbol})</h3>
-                                            <h1>${item.current_price}</h1>
-                                        </div>
-                                        <small className='text-muted'>1.000000 {item.symbol}</small> 
+                                    <div className="c__symbol">
+                                        ({item.symbol})
+                                    </div>
                                 </div>
-                            ))
-                        }
-                         <div className='save-coin'>
-                            { loading ?
-                            <h3 className='skeleton-save'></h3>
-                            :
-                            coinAllreadyFav() ? <h3>Coin Saved</h3> : <h3 onClick={addCointoFav}>Save this Coin</h3>
-                            }
+                            </div>
+                            <div className="c__all-price">
+                                <span>$</span>{item.current_price}
+                            </div>
                         </div>
-                    </div>
-                    <div className="coin-info background--blocks">
-                    <FontAwesomeIcon icon="fas fa-backward" onClick={() => navigate('/coins')}/>
-                    <h1>Go back to Coin List
-                    </h1>
+                    )
+                }
+                <div className="c__chart--wrapper">
+                    <div className='c__chart'>
+                        <ChartLine coinname={id} />
                     </div>
                 </div>
-                <div className="coin-char">
-                    <div className="coin-char-data background--blocks">
-                        <ChartLine coinname={id}/>
-                    </div>
-                    <div className="coin-info-data background--blocks">
-                        {
-                            loading ?
-                            coin.map(item => (
-                                    <table key={item.id} className='coin-table-info'>
-                                        <thead>
-                                            <tr>
-                                                <td className='coin-info-bold'>Coin Informations:</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr  className='skeleton-table-info'>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr  className='skeleton-table-info'>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr  className='skeleton-table-info'>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr  className='skeleton-table-info'>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr  className='skeleton-table-info'>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr  className='skeleton-table-info'>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr  className='skeleton-table-info'>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr  className='skeleton-table-info'>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr  className='skeleton-table-info'>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-
-                                        </tbody>
-                                    </table>
-                                ))
-                            :
-                            coin.map(item => 
-                                    <table key={item.id} className='coin-table-info'>
-                                        <thead>
-                                            <tr>
-                                                <td className='coin-info-bold'>Coin Informations:</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Name:</td>
-                                                <td>{item.name}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Symbol:</td>
-                                                <td>{item.symbol}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Rank:</td>
-                                                <td>{item.market_cap_rank}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>High 24h:</td>
-                                                <td>{item.high_24h || 0}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Low 24h</td>
-                                                <td>{item.low_24h || 0}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Market Cap:</td>
-                                                <td>{item.market_cap || 0}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Total Supply:</td>
-                                                <td>{item.total_supply || 0}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Total Volume:</td>
-                                                <td>{item.total_volume || 0}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Price Change:</td>
-                                                <td>{item.price_change_24h || 0}</td>
-                                            </tr>
-
-                                        </tbody>
-                                    </table>
-                            )
-                        }
-                    </div>
-                    <div className='margin'></div>
+                <div className="market__stats">
+                    <h3>Market stats</h3>
+                </div>
+                {
+                    coin.map(item =>
+                        <div className="c__market--stats" key={item.id}>
+                            <div className="c__stat">
+                                <span>Market cap</span>
+                                <p className='c__stat--text'>{item.market_cap}</p>
+                            </div>
+                            <div className="c__stat">
+                                <span>Volume (24h)</span>
+                                <p className='c__stat--text'>{item.total_volume}</p>
+                            </div>
+                            <div className="c__stat">
+                                <span>Circulating Supply</span>
+                                <p className='c__stat--text'>{item.circulating_supply}</p>
+                            </div>
+                            <div className="c__stat">
+                                <span>Total Supply</span>
+                                {item.total_supply == null ?
+                                    <p className='c__stat--text'> - </p>
+                                    :
+                                    <p className='c__stat--text'>{item.total_supply}</p>
+                                }
+                            </div>
+                            <div className="c__stat">
+                                <span>Current Price</span>
+                                <p className='c__stat--text'>{item.current_price}</p>
+                            </div>
+                            <div className="c__stat">
+                                <span>Highest Price (24h)</span>
+                                <p className='c__stat--text'>{item.high_24h}</p>
+                            </div>
+                            <div className="c__stat">
+                                <span>Price Change (24h)</span>
+                                {(item.price_change_percentage_24h) > 0 ?
+                                    <p className='grn'>{item.price_change_percentage_24h}%</p>
+                                    :
+                                    <p className='red'>{item.price_change_percentage_24h}%</p>
+                                }
+                            </div>
+                            <div className="c__stat">
+                                <span>Market Cap Change (24h)</span>
+                                {item.market_cap_change_percentage_24h > 0 ?
+                                    <p className='grn'>{item.market_cap_change_percentage_24h}%</p>
+                                    :
+                                    <p className='red'>{item.market_cap_change_percentage_24h}%</p>
+                                }
+                            </div>
+                        </div>)
+                }
+                <div className="c__save">
+                    {
+                        coinAllreadyFav() ? <a className='c__btn c__saved'>Coin Saved</a> : <a className='c__btn' onClick={addCointoFav}>Save Coin</a>
+                    }
+                    
                 </div>
             </div>
+        </div>
 
     );
 }

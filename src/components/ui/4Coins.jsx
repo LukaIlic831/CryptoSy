@@ -64,7 +64,9 @@ const FourCoins = () => {
                                 }
                     </div>
                 </div>
+                <div className="show-all-wrapper">
                 <a href="#" className='show-all' onClick={() => navigate('/coins')}>Show All</a>
+                </div>
             </div>
         </div>
 

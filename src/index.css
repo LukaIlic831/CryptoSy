@@ -5,7 +5,7 @@ body {
   font-family: 'Lato', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color:rgba(226, 224, 224, 0.808);
+  background-color: #000644;
   overflow-x: auto;
 }
 
@@ -14,21 +14,25 @@ code {
     monospace;
 }
 
-*{
+.no-cursor{
+  cursor:default;
+}
+
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
 }
 
-.row{
+.row {
   width: 100%;
   max-width: 1500px;
-  margin:0 auto;
+  margin: 0 auto;
   padding: 0 20px;
 }
 
-.background--blocks{
+.background--blocks {
   background-color: white;
   padding: 1.4rem;
   border-radius: 2rem;
@@ -37,280 +41,475 @@ code {
 }
 
 
-li{
-  list-style-type:none;
+li {
+  list-style-type: none;
 }
 
-a{
+a {
   text-decoration: none;
 }
 
-button{
+button {
   cursor: pointer;
 }
 
-.margin{
+.margin {
   width: 100%;
   height: 2px;
 }
 
-.fa-circle-half-stroke{
+.fa-circle-half-stroke {
   font-size: 22px;
   padding-left: 20px;
   cursor: pointer;
-  transition:all 300ms ease;
+  transition: all 300ms ease;
   transform: scale(1);
 }
 
-.fa-circle-half-stroke:hover{
+.fa-circle-half-stroke:hover {
   transform: translateY(-2px)
 }
 
-.fa-star{
+.fa-star {
   font-size: 28px;
   cursor: pointer;
 }
 
 /* Navigation */
 
-nav{
+nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   max-width: 1500px;
-  margin:0 auto;
-  padding:0 20px;
+  margin: 0 auto;
+  padding: 0 20px;
   height: 100px;
 }
 
-.logo__wrapper{
+.logo__wrapper {
   display: flex;
-}
-
-nav h2{
+  align-items: center;
   cursor: pointer;
 }
 
-.nav__profile{
-  display: flex;
-  align-items: center;
-  text-align: right;
-
+.logo__wrapper figure img {
+  width: 70px;
 }
 
-.nav__profile--img{
-  margin:0 12px;
+nav h2 {
+  cursor: pointer;
+  color: #08b7fd;
+}
+
+.nav__profile {
+  display: flex;
+  align-items: center;
+}
+
+.nav__list {
+  display: flex;
+  padding-right: 20px;
+}
+
+.nav__link {
+  color: #fff;
+  font-weight: 500;
+  font-size: 18px;
+  color: #fff;
+  letter-spacing: 1px;
+  cursor: pointer;
+  position: relative;
+  margin: 10px;
+}
+
+.nav__link::after {
+  content: "";
+  position: absolute;
+  height: 3px;
+  width: 0;
+  bottom: -3px;
+  right: 0;
+  background-color: #fff;
+  transition: all 300ms ease;
+}
+
+.nav__link:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+.nav__profile--img {
+  margin: 0 12px;
   width: 64px;
   height: 64px;
   border-radius: 50%;
   overflow: hidden;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.16);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.16);
 }
 
-#profile__img{
+#profile__img {
   width: 100%;
 }
 
-.admin{
+.admin {
   font-weight: bold;
 }
 
-.favorite{
+.favorite {
   display: flex;
   align-items: center;
   padding-right: 20px;
 }
 
-.favorite p{
-  padding-right:10px;
-  cursor:default;
+.favorite p {
+  padding-right: 10px;
+  cursor: default;
 }
 
-.para{
+.para {
   border-left: 2px solid black;
   padding-left: 16px;
 }
 
 /* Main */
 
-main{
+main {
   margin-top: 1.4rem;
 }
 
 
 
-.date{
+.date {
   padding: 0.5rem 1rem;
+  color: #08b7fd;
+  font-size: 18px;
 }
 
-.date input[type="date"]{
+.date input[type="date"] {
   background: transparent;
   color: #242424;
 }
 
-.dashboard{
+.dashboard {
   display: flex;
   align-items: center;
 }
 
-.dashboard h1{
+.dashboard h1 {
   padding-right: 10px;
+  color: #08b7fd;
 }
 
-.insights{
+.insights {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.6rem;
 }
 
+.sales {
+  background-color: #8511b5;
+  box-shadow: 0 0 51px rgb(133 25 179 / 88%);
+}
 
-.material-icons-sharp{
-  color:rgb(65, 65, 207);
+.expenses {
+  background-color: #08b7fd;
+  box-shadow: 0 0 51px rgb(9 176 253 / 93%);
+}
+
+.income {
+  background-color: #0a6eff;
+  box-shadow: 0 0 51px rgb(10 108 255 / 87%);
+}
+
+.material-icons-sharp {
+  color: #fff;
   padding: 0.5rem;
   font-size: 2.5rem;
 }
 
 
-.insights > div.expenses span{
-color: #ff7782;
+
+
+.middle {
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.insights > div.income span{
-  color: #41f1b6;
-  }
+.insights h3 {
+  margin: 1rem 0 0.6rem;
+  font-size: 1rem;
+  color: #fff;
+  letter-spacing: 0.6px;
+}
 
-  .middle{
-    padding-top: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .insights h3{
-    margin: 1rem 0 0.6rem;
-    font-size: 1rem;
-  }
-
-  .progress{
-    position: relative;
-    width: 92px;
-    height: 92px;
-    border-radius: 50%;
-  }
+.progress {
+  position: relative;
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+}
 
 
-  svg circle{
-    fill: none;
-    stroke:rgb(65, 65, 207);
-    stroke-width: 14;
-    stroke-linecap: round;
-    transform: translate(5px, 5px);
-    stroke-dashoffset: 92;
-  }
+svg circle {
+  fill: none;
+  stroke: rgb(65, 65, 207);
+  stroke-width: 14;
+  stroke-linecap: round;
+  transform: translate(5px, 5px);
+  stroke-dashoffset: 92;
+}
 
-  .sales svg circle{
-    stroke-dashoffset: -30;
-    stroke-dasharray: 200;
-  }
+.sales svg circle {
+  stroke-dashoffset: -30;
+  stroke-dasharray: 200;
+}
 
-  .expenses svg circle{
-    stroke-dashoffset: 20;
-    stroke-dasharray: 80;
-  }
+.expenses svg circle {
+  stroke-dashoffset: 20;
+  stroke-dasharray: 80;
+}
 
-  .income svg circle{
-    stroke-dashoffset: 35;
-    stroke-dasharray: 110;
-  }
+.income svg circle {
+  stroke-dashoffset: 35;
+  stroke-dasharray: 110;
+}
 
-  .number{
-    position: absolute;
-    top:0;
-    left:0;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.number {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  .text-muted {
-    color:gray;
-  }
+.text-muted {
+  color: rgb(214, 207, 207);
+
+}
+
+.ins-price {
+  color: #fff;
+}
 
 /* 4-Coins */
-.cryptocurrency-prices{
+.cryptocurrency-prices {
   margin-top: 0.2rem;
 }
 
-.cryptocurrency-prices h2{
-  margin:30px
+.c__wrapper{
+  background-color: #fff;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 10px;
+  margin-bottom: 30px;
 }
 
-.cryptocurrency-pricesTitle{
+.c__logo img{
+  width: 60px;
+  height: 60px;
+}
+
+.c__back{
+  padding: 10px;
+  padding-top: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.c__a{
+  padding-right: 8px;
+  cursor: pointer;
+}
+
+.c__a, .c__n{
+  font-size: 16px;
+  transition: all 300ms ease;
+}
+
+.no__fav--coins img{
+  width: 100%;
+}
+
+.c__a:hover{
+  color: #0a6eff;
+}
+
+.c__n{
+  padding-left: 8px;
+}
+
+.c__chart{
+  padding: 20px;
+  border-bottom: 1px solid #c5c4c4;
+}
+
+.market__stats{
+  margin: 20px 0;
+  padding: 0 20px;
+}
+
+.market__stats h3{
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+}
+
+.c__market--stats{
+  padding:0 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.c__stat{
+  width: 100%;
+  max-width: calc(100% / 4);
+  margin-bottom: 20px;
+}
+
+.c__stat span{
+  font-size: 18px;
+  color: #575757;
+}
+
+.c__stat--text{
+  padding-top: 10px;
+  line-height: 1.3;
+  color: rgb(39, 39, 39);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.grn, .red{
+  padding-top: 10px;
+  line-height: 1.3;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.grn, .green-perc{
+  color:#39ec60;
+}
+
+.red, .red-perc{
+  color:#fd5331;
+}
+
+.c__all{
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #c5c4c4;
+}
+
+.c__all-price{
+  font-size: 36px;
+}
+
+.c__all-price span{
+  font-size: 24px;
+}
+
+.c__all-title{
+  display: flex;
+}
+
+.c__name{
+  font-size: 36px;
+  font-weight: 600;
+}
+
+.c__symbol{
+  font-size: 20px;
+  color:#7e7d7d;
+}
+
+.c__title{
+  padding-left: 20px;
+}
+
+
+
+.cryptocurrency-pricesTitle {
+  width: 100%;
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 4em;
+  color: #ffffff;
+  letter-spacing: .1rem;
+  text-align: center;
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-table{
+table {
   background-color: white;
   width: 100%;
-  border-radius:2rem;
+  border-radius: 2rem;
   padding: 1.4rem;
-  box-shadow: 0 2rem 3rem rgba(132, 139, 200,0.18);
+  box-shadow: 0 2rem 3rem rgba(132, 139, 200, 0.18);
   overflow: hidden;
 }
 
-.table-coins{
+.table-coins {
   text-align: center;
 }
 
-tbody td{
+tbody td {
   height: 2.0rem;
   border-bottom: 1px solid white;
-  color:#242424;
+  color: #242424;
   cursor: pointer;
 }
 
-.table-coins-body .table-coins-row{
+.table-coins-body .table-coins-row {
   transition: all 300ms ease-in-out;
 }
 
-.table-coins-body .table-coins-row:hover{
-  transform:scale(1.05);
+.table-coins-body .table-coins-row:hover {
+  transform: scale(1.05);
 }
 
-.table-coins-body .table-coins-row:hover td{
-  height:2.1rem;
+.table-coins-body .table-coins-row:hover td {
+  height: 2.1rem;
   font-weight: 700;
   font-size: 16px;
 }
 
-tbody tr:last-child td{
-  border:none;
+tbody tr:last-child td {
+  border: none;
 }
 
-.table-coins{
+.table-coins {
   overflow-y: scroll;
   max-height: 500px;
 }
 
-.AllCoins__wrapper{
+.AllCoins__wrapper {
   display: flex;
   width: 70%;
   flex-direction: column;
   align-items: center;
 }
 
-.AllCoins--center{
+.AllCoins--center {
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-.AllCoin__block{
+.AllCoin__block {
   display: flex;
   width: 100%;
   align-items: center;
@@ -319,80 +518,163 @@ tbody tr:last-child td{
   cursor: pointer;
 }
 
-.fourCoinsBlock{
+.fourCoinsBlock {
   justify-content: space-between;
 }
 
-.style-supply p{
+.style-supply p {
   font-size: 24px;
 }
 
-.style-para, .style-name, .style-supply, .style-volume, .AllCoin__Price--para, .remove-coin{
+.c__save{
+  padding-top: 18px;
   width: 100%;
-  max-width: calc(100%/6 + 56px);
+  text-align: center;
+  margin: 20px 0 10px 0;
+}
+
+.c__btn{
+  display: inline-block;
+  padding: 0.8rem 4rem;
+  font-size: 16px;
+  font-weight: 700;
+  color: #000644;
+  border: 3px solid #0a6eff;
+  cursor: pointer;
+  position: relative;
+  background-color: transparent;
+  text-decoration: none;
+  overflow: hidden;
+  transition: all .3s ease;
+  z-index: 1;
+  margin-bottom: 10px;
+}
+
+.c__btn::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0a6eff;
+  transform: translateX(-100%);
+  transition: all .3s ease;
+  z-index: -1;
+}
+
+.c__btn:hover{
+  color:white;
+}
+
+.c__btn:hover::before {
+  transform: translateX(0);
+}
+
+.c__saved{
+  color:#fff;
+}
+
+.c__saved::before{
+  transform: translateX(0);
+}
+
+.style-para,
+.style-name,
+.style-supply,
+.style-volume,
+.AllCoin__Price--para,
+.remove-coin {
+  width: 100%;
+  max-width: calc(100%/6 + 96px);
   text-align: center;
 }
 
-.AllCoin__para{
+.AllCoin__para {
   display: flex;
   align-items: center;
-text-align: right;
+  text-align: right;
 }
 
 
-.AllCoin__img--wrapper{
+.AllCoin__img--wrapper {
   padding-right: 10px;
 }
 
-.AllCoin__img{
+.AllCoin__img {
   width: 30px;
   height: 30px;
 }
 
-.AllCoin__name{
+.AllCoin__name {
   text-align: left;
 }
 
-.AllCoin__name span{
+.AllCoin__name span {
   font-size: 16px;
   font-weight: 600;
 }
 
-.AllCoin__name p{
-  color:#7e7d7d;
+.AllCoin__name p {
+  color: #7e7d7d;
 }
 
-.AllCoin__Price--para{
- text-align: right;
- padding-right: 20px;
+.AllCoin__Price--para {
+  text-align: right;
+  padding-right: 20px;
 }
 
-.coins-page{
+.coins-page {
   width: 90%;
 }
 
-.show-all{
-  text-align: center;
-  display: block;
-  margin: 1rem;
-  color:rgb(65, 65, 207);
+.show-all {
+  height: 70px;
+    line-height: 65px;
+    display: inline-block;
+    background: transparent;
+    color: #fff;
+    border: 1px solid;
+    padding: 0 50px;
+    position: relative;
+    font-size: 17px;
+    border-radius: 100px;
+    width: 300px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    transition: all 300ms ease;
 }
 
-.coin-table-info{
+.show-all:hover{
+  background-color: #0a6eff;
+  border-color:#0a6eff;
+}
+
+.show-all-wrapper{
+  margin:20px 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.coin-table-info {
   box-shadow: none;
 }
 
 .coin-table-info,
 .coin-table-info tbody,
 .coin-table-info tr,
-.coin-table-info td{
-  cursor:default;
+.coin-table-info td {
+  cursor: default;
 }
 
 /* Coins Page */
 
-.coins{
-  margin-top:0rem;
+.coins {
+  margin-top: 0rem;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -401,14 +683,14 @@ text-align: right;
   position: relative;
 }
 
-.coin-data{
+.coin-data {
   display: grid;
   grid-template-columns: 1fr 400px;
   gap: 1.6rem;
 }
 
 
-.coin-char{
+.coin-char {
   display: grid;
   grid-template-columns: 1fr 400px;
   height: calc(100vh - 240px);
@@ -417,85 +699,96 @@ text-align: right;
 }
 
 
-.coin-info-bold{
+.coin-info-bold {
   font-weight: 600;
 }
 
-.char-width-height{
+.char-width-height {
   width: 100%;
-  
+
 }
 
-.coin-rank{
+.coin-rank {
   background-color: #242424;
-  color:white;
+  color: white;
   width: 78px;
   padding: 2px 2px;
   border-radius: 5px;
   margin-bottom: 10px;
 }
 
-.coin-info{
+.coin-info {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.fa-backward{
+.fa-backward {
   font-size: 60px;
   cursor: pointer;
 }
 
-.coin-price{
+.coin-price {
   position: relative;
 }
 
-.coin-img{
+.coin-img {
   width: 25px;
   height: 25px;
 }
 
-.save-coin{
- cursor: pointer;
+.save-coin {
+  cursor: pointer;
 }
 
-.star-icon{
+.star-icon {
   width: 32px;
   height: 32px;
   cursor: pointer;
   display: block;
 }
 
-.Gainer-Loser-wrapp{
+.Gainer-Loser-wrapp {
   position: relative;
 }
 
-.fa-arrow-left{
+.fa-arrow-left {
   position: absolute;
-  top:-20px;
-  left:20px;
+  top: -20px;
+  left: 20px;
   font-size: 30px;
   cursor: pointer;
 }
 
-.Gainer-Loser{
+.Gainer-Loser {
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(2, 0.25fr);
   gap: 1.6rem;
-  margin:20px 0;
+  margin: 20px 0;
 }
 
-.Gainer-Loser > div{
-  background-color: white;
+.Gainer {
+  background-color: #39ec60;
+  box-shadow: 0 0 51px rgba(60, 182, 64, 0.88);
   padding: 1.4rem;
   border-radius: 2rem;
   margin-top: 1rem;
-  box-shadow: 0 2rem 3rem rgba(132, 139, 200,0.18);
+  
+}
+
+
+
+.Loser {
+  background-color: #fd5331;
+  box-shadow: 0 0 51px rgba(238, 82, 64, 0.88);
+  padding: 1.4rem;
+  border-radius: 2rem;
+  margin-top: 1rem;
 }
 
 .Gainer-wrap,
-.Loser-wrap{
+.Loser-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -503,211 +796,331 @@ text-align: right;
 }
 
 .Gainer-wrap p,
-.Loser-wrap p{
+.Loser-wrap p {
   margin-bottom: 2px;
   font-size: 18px;
 }
 
 .gainer-face,
-.loser-face{
+.loser-face {
   font-size: 32px;
+  color:#fff;
 }
 
-.gainer-face{
-  color:rgb(54, 173, 54);
+.cryptocurrency-prices h2{
+  width: 100%;
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin:20px 0;
+  color: #ffffff;
+  letter-spacing: .1rem;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-.green-perc{
-  color:rgb(54, 173, 54);
+
+.price-change-pr{
+  color:#fff;
+  padding: 5px 0;
 }
 
-.red-perc{
-  color:rgb(184, 35, 35);
+.c-name{
+  padding-top: 4px;
+  color: #fff;
 }
 
-.loser-face{
-  color:rgb(184, 35, 35);
+.Green {
+  color:#fff;
 }
 
-.Green{
-  color:rgb(80, 196, 80);
-}
-
-.Red{
-  color:rgb(226, 52, 52);
+.Red {
+  color: #fff;
 }
 
 /* Favorite Coins */
 
-.favorite-coins{
+.favorite-coins {
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.favorite-coins h2{
-  margin-bottom: 0.8rem;
+.favorite-coins h2 {
+  width: 100%;
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin:20px 0;
+  color: #ffffff;
+  letter-spacing: .1rem;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-.remove-coin{
-  color:rgb(255, 46, 46);
+.remove-coin {
+  color: rgb(255, 46, 46);
   font-weight: 600;
 }
 
-.remove{
-  color:black;
+.remove {
+  color: black;
 }
 
 /* Skeleton */
 
-.skeleton__loading{
+.skeleton__loading {
   width: 100%;
   height: 30px;
   margin-bottom: 20px;
   background-color: lightgray;
 }
 
-.skeleton-title{
-  width:100%;
+.skeleton-title {
+  width: 100%;
   height: 36px;
   background-color: lightgray;
 }
 
-.skeleton-table-row{
+.skeleton-table-row {
   width: 2px;
   height: 24px;
   background-color: lightgray;
 }
 
-.skeleton-para{
+.skeleton-para {
   width: 80px;
   height: 22px;
   background-color: lightgray;
 }
 
-.skeleton-coin{
+.skeleton-coin {
   width: 120px;
   height: 38px;
   background-color: lightgray;
 }
 
-.skeleton-coin h3{
-  margin-bottom:10px;
+.skeleton-coin h3 {
+  margin-bottom: 10px;
 }
 
-.skeleton-rank{
+.skeleton-rank {
   width: 78px;
   padding: 2px 2px;
   border-radius: 5px;
   margin-bottom: 10px;
 }
 
-.skeleton-save{
-  margin-top:20px;
+.skeleton-save {
+  margin-top: 20px;
   width: 100px;
   height: 20px;
   background-color: lightgray;
 }
 
-.skeleton-table-info{
+.skeleton-table-info {
   background-color: lightgray;
 }
 
+.fa-bars{
+  font-size: 24px;
+  color: #fff;
+  padding-right: 12px;
+  display: none;
+}
+
+.mobile__menu{
+  background-color: #000644;
+  width: 100%;
+  padding: 0 20px;
+  height: 100vh;
+  position: fixed;
+  z-index: 1000;
+  top:0;
+  left:-100%;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 300ms ease;
+}
+
+.open__mobile--menu{
+  left: 0;
+}
+
+.mobile__menu--list{
+  text-align: center;
+}
+
+.mobile__menu--link{
+  color: #fff;
+  font-size: 24px;
+  margin-bottom: 18px;
+}
+
+.fa-xmark{
+  position: absolute;
+  color:#fff;
+  font-size: 30px;
+  top:10%;
+  right: 10%;
+}
+
 /* For Tablets */
-@media(max-width:1200px){
-  .insights{
-    grid-template-columns:1fr;
-    gap:0;
+@media(max-width:1200px) {
+  .insights {
+    grid-template-columns: 1fr;
+    gap: 0;
   }
 
-  .Gainer-Loser{
+  .Gainer-Loser {
     grid-template-columns: repeat(2, 0.5fr);
   }
 
-  .coin-char{
+  .coin-char {
     display: grid;
     grid-template-columns: 1fr;
   }
 
-  .coin-data{
+  .coin-data {
     grid-template-columns: 1fr;
   }
 }
 
 /* For SmartPhones */
-@media(max-width:768px){
+@media(max-width:768px) {
 
-  .Gainer-Loser{
+  .Gainer-Loser {
     grid-template-columns: 1fr;
   }
 
-  .favorite p{
+  .favorite p {
     display: none;
   }
 
-  .table-coins-row{
+  .table-coins-row {
     font-size: 12px;
   }
 
-  .coin-info-data{
+  .coin-info-data {
     margin-bottom: 50px;
   }
 
-  .AllCoins__wrapper{
+  .AllCoins__wrapper {
     width: 100%;
   }
 
-  .AllCoin__supply, .AllCoin__volume{
+  .AllCoin__supply,
+  .AllCoin__volume {
     display: none;
   }
 
-  .AllCoin__block{
+  .AllCoin__block {
     justify-content: space-between;
   }
 
-  .AllCoin__Price--para h3, .remove h3, .style-para h3{
+  .AllCoin__Price--para h3,
+  .remove h3,
+  .style-para h3 {
     font-size: 16px;
   }
 
 }
 
-@media(max-width:440px){
+@media (max-width:500px) {
+  .nav__list{
+    display: none;
+  }
 
-  .Gainer-Loser{
+  .logo__wrapper figure img{
+    width: 40px;
+  }
+
+  .logo__wrapper h2{
+    font-size: 20px;
+    padding-left: 4px;
+  }
+
+  .fa-bars{
+    display: block;
+  }
+
+  .c__name{
+    font-size: 26px;
+  }
+
+  .c__symbol{
+    font-size: 14px;
+  }
+
+  .c__logo img{
+    width: 40px;
+    height: 40px;
+  }
+
+  .c__all-price {
+    font-size: 24px;
+  }
+
+  .c__chart{
+    padding:2px;
+  }
+
+  .c__stat{
+    max-width: calc(100% / 2);
+  }
+
+  .c__stat span{
+    font-size: 16px;
+  }
+
+  .no__fav--coins{
+   padding-top: 100px;
+  }
+}
+
+@media(max-width:440px) {
+
+  .Gainer-Loser {
     grid-template-columns: 1fr;
   }
 
-  .para{
+  .para {
     display: none;
   }
 
-  .middle{
+  .middle {
     font-size: 10px;
   }
 
-  .favorite p{
+  .favorite p {
     display: none;
   }
 
-  .table-coins-row{
+  .table-coins-row {
     font-size: 12px;
   }
 
-  .AllCoin__img{
+  .AllCoin__img {
     width: 20px;
     height: 20px;
   }
 
-  .AllCoin__name span{
+  .AllCoin__name span {
     font-size: 14px;
   }
 
-  .cryptocurrency-prices h2{
+  .cryptocurrency-prices h2 {
     font-size: 21px;
   }
 
-  .AllCoin__Price--para h3, .remove h3, .style-para h3{
+  .AllCoin__Price--para h3,
+  .remove h3,
+  .style-para h3 {
     font-size: 14px;
   }
 }
